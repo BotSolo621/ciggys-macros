@@ -3,7 +3,10 @@ import keyboard as kb
 import time as t
 import win32api, win32con
 import random
-from ..HPapi import check_lobby
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from HPapi import check_lobby
 
 current_lobby = {"data2": "", "data3": ""}
 

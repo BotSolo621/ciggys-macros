@@ -10,6 +10,7 @@ def get_uuid(PlayerName):
         return response.json()["id"]
     else:
         print("Incorrect player name or Mojang's servers are down. Try again later.")
+        exit(1)
 
 def get_player_status(key, uuid):
     url = f"https://api.hypixel.net/status?key={key}&uuid={uuid}"
@@ -20,8 +21,10 @@ def get_player_status(key, uuid):
             return data
         else:
             raise ValueError("API request failed. Check API key.")
+        exit(2)
     else:
         raise ValueError("Failed to fetch status.")
+    exit(3)
 
 def check_lobby():
     uuid = get_uuid(PlayerName)
@@ -32,6 +35,3 @@ def check_lobby():
     game_type = session.get("gameType")
     mode = session.get("mode")
     return success, online, game_type, mode
-
-if __name__ == "__main__":
-    check_lobby()
